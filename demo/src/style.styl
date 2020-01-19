@@ -1,0 +1,237 @@
+/* --- VARS --- */
+phone = 'screen and (max-width: 767px)'
+
+colorPrime = #2b8a3e
+colorPrimeLight = #d3f9d8
+
+
+/*!
+ --- RESET --------------------------------------
+*/
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+  &:before, &:after
+    box-sizing: inherit
+
+html
+  font-size: 16px
+
+
+body
+  padding-bottom: 2em
+
+
+/*
+ --- TAB ------------------------------
+*/
+.tab
+  display: none
+  opacity: 0
+
+  &.is-active
+    display: block
+    animation: tab-is-active 0.15s ease-in-out 0.1s 1 forwards
+
+
+@keyframes tab-is-active
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+
+/*
+ --- DEMO ---------------------------------------
+*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+
+.example
+  padding: 2em 0
+  border-bottom: 1px solid rgba(#000,0.1)
+
+
+.grid
+  display: grid
+  grid-template-columns: repeat(2, 50%)
+  grid-column-gap: 30px
+  @media phone
+    grid-template-columns: repeat(1, 100%)
+    grid-row-gap: 30px
+
+
+/*
+ --- PANEL ----------------------------
+*/
+.panel
+  .panel-item
+    padding: 1em
+    border: 1px solid #eee
+
+    &:not(:last-child)
+      margin-bottom: 1em
+
+.header
+  text-align: center
+  padding: 1em 0
+
+h1
+  font-size: 2em
+  text-align: center
+
+h3
+  font-size: 1.2em
+  font-weight: bold
+  margin-bottom: 1em
+
+h4
+  font-size: 1.1em
+  margin-top: 2em
+  margin-bottom: 1em
+
+
+.button
+  display: inline-flex
+  align-items: center
+  background-color: rgba(255,255,255,0)
+  border: 1px solid rgba(#000,0.05)
+  box-shadow: 0 0 10px 0 #e9ecef
+  padding: 0.5em 1em
+  cursor: pointer
+  font-size: 0.8em
+  font-family: inherit
+  border-radius: 5px
+  outline: 0
+  transition: all 0.32s linear
+
+  &:hover
+    background-color: colorPrimeLight
+
+  &-control
+    &.is-active
+      background-color: colorPrime
+      color: #fff
+
+  input
+    margin-right: 0.5em
+    outline: none
+
+
+.tab-demo
+  margin-top: 1em
+  padding: 1em
+  border: 1px solid rgba(#000,0.05)
+
+  p:not(:last-child)
+    margin-bottom: 1em
+
+
+.tabs
+  display: flex
+  align-items: center
+  list-style: none
+
+  &-item
+    display: block
+    padding: 0.5em 1em
+    font-size: 0.8em
+    border: 1px solid rgba(#000, 0.05)
+
+    &:not(:last-child)
+      margin-right: 1em
+
+    &.is-active
+      background-color: colorPrime
+      color: #fff
+
+  &-label
+    display: flex
+    align-items: center
+
+    input
+      margin-right: 0.5em
+      outline: none
+
+    input:checked ~ span
+      font-weight: bold
+
+
+.label-group
+  display: inline-flex
+  align-items: center
+
+  input[type="checkbox"]
+    margin-right: 0.5em
+
+  input[type="text"]
+    height: 32px
+    padding: 0 0.5em
+
+
+#create-toggler
+  margin-bottom: 1em
+
+
+
+// .target.is-active {
+//   padding: 1em 0;
+//   transition: all 0.25s linear;
+// }
+
+// .tab p:not(:last-child) {
+//   margin-bottom: 1em;
+// }
+
+// .target-tab.is-active {
+//   padding: 1em 0;
+// }
+
+// .tabs {
+//   display: flex;
+//   list-style-type: none;
+// }
+
+// .tabs-inputs li:not(:last-child) {
+//   margin-right: 1em;
+// }
+
+// .tab-button {
+//   background-color: rgba(255,255,255,0);
+//   border: 1px solid #f1f3f5;
+//   padding: 0.6em 1em;
+//   outline: 0;
+//   cursor: pointer;
+// }
+
+// .tab-button-trigger.is-active {
+//   background-color: #bac8ff;
+// }
+
+// li label {
+//   display: inline-block;
+//   position: relative;
+//   cursor: pointer;
+// }
+
+// li label input {
+//   position: absolute;
+//   top: 50%;
+//   left: 10px;
+//   /* opacity: 0; */
+//   transform: translateY(-50%);
+// }
+
+// li label .button {
+//   padding-left: 2em;
+// }
+
+// li label input:checked ~ .button {
+//   background-color: #bac8ff;
+// }

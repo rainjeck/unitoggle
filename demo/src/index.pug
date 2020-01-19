@@ -1,0 +1,269 @@
+doctype html
+html(lang="ru-RU")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv='X-UA-Compatible', content="IE=edge")
+    meta(name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
+    meta(name="format-detection" content="telephone=no")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    meta(name="author" content="https://vk.com/tishukn")
+
+    link(rel="stylesheet", href="demo/prism.css")
+
+    link(rel="stylesheet" type='text/css' href="demo/style.css")
+
+    meta(name="keywords" content="")
+    meta(name="description" content="")
+
+    title Unitoggle Demo
+
+  body
+    <!--[if lte IE 9]>
+    p.browsehappy Вы используете #[strong устаревший] браузер. Пожалуйста #[a(href="http://browsehappy.com/", target="_blank") обновите ваш браузер] чтобы воспользоваться всем функционалом сайта.
+    <![endif]-->
+
+    .container
+      .header
+        h1 Unitoggle Demo
+        p Vanilla Javascript, ES6
+        p #[a(href="https://rainjeck.github.io/unitoggle") Github]
+      .panel
+        .panel-item
+          h3 Get Started
+          p Include:
+          pre.language-markup: code
+            = '<script src="unitoggle.min.js"></script>'
+
+          p JS:
+          pre.language-javascript: code.
+            const toggler = new Unitoggle.default();
+
+          p Options:
+          pre.language-javascript: code.
+            container: document.body, // Container: string or object. Default: document.body
+            dataAttr: 'toggle', // button and group attr. Default: [data-toggle], [data-toggle-group], [data-toggle-accordion]
+            activeClass: 'is-active', // active class. Default: 'is-active'
+            activateInputs: false, // Activate input fields (input, select, textarea) after open. Set attr [disabled] on input fields.
+            onOpen: function(tab) {}, // After open callback
+            onClose: function(tab) {} // After close callback
+
+          p CSS:
+          pre.language-css: code.
+            /* DEMO CSS */
+            .tab {
+              display: none;
+              opacity: 0;
+            }
+
+            .tab.is-active {
+              display: block;
+              animation: tab-is-active 0.15s ease-in-out 0.1s 1 forwards;
+            }
+
+            @keyframes tab-is-active {
+              from {
+                opacity: 0;
+              }
+              to {
+                opacity: 1;
+              }
+            }
+        // end .panel-item
+
+        .panel-item
+          h3 Basic Example
+          p HTML:
+          pre.language-markup: code.
+            #{"<div id='example1'>"}
+              #{"<button type='button' data-toggle='toggle1'>Button Toggle 1</button>"}
+              #{"<div id='toggle1' class='tab'>"}
+                #{"<p>Content Toggle 1</p>"}
+                #{"<button type='button' data-toggle='toggle1'>Close</button>"}
+              #{"</div>"}
+            #{"</div>"}
+
+          p JS:
+          pre.language-javascript: code.
+            const toggler = new Unitoggle.default({
+              container: '#example1'
+            });
+
+          h4 DEMO:
+          .panel
+            #example1
+              each item, index in [1,2,3]
+                .panel-item
+                  button.button.button-control(type="button" data-toggle="toggle" + item) Button Toggle #{index + 1}
+                  .tab.tab-demo(id="toggle" + item)
+                    p Content Toggle #{index + 1}
+                    p: button.button(type="button" data-toggle="toggle" + item) Close
+        // end .panel-item
+
+        .panel-item
+          h3 Accordion
+          p HTML:
+          pre.language-markup: code.
+            #{"<!-- [data-toggle-accordion] - if you want close active accordion after repeat click -->"}
+            #{"<!-- [data-toggle-group] - your group name -->"}
+            #{"<div id='example2'>"}
+              #{"<button type='button' data-toggle='toggle1' data-toggle-accordion data-toggle-group='acc'>Button Toggle</button>"}
+              #{"<div id='toggle1' class='tab'>"}
+                #{"<p>Content Toggle</p>"}
+                #{"<button type='button' data-toggle='toggle2'>Close</button>"}
+              #{"</div>"}
+              #{"<button type='button' data-toggle='toggle2' data-toggle-accordion data-toggle-group='acc'>Button Toggle</button>"}
+              #{"<div id='toggle2' class='tab'>"}
+                #{"<p>Content Toggle</p>"}
+                #{"<button type='button' data-toggle='toggle2'>Close</button>"}
+              #{"</div>"}
+            #{"</div>"}
+
+          p JS:
+          pre.language-javascript: code.
+            const toggler = new Unitoggle.default({
+              container: '#example2'
+            });
+
+          h4 DEMO:
+          .panel
+            #example2
+              each item, index in [4,5,6]
+                .panel-item
+                  button.button.button-control(type="button" data-toggle="toggle" + item data-toggle-accordion data-toggle-group="acc") Button Toggle #{index + 1}
+                  .tab.tab-demo(id="toggle" + item)
+                    p Content Toggle #{index + 1}
+                    p: button.button(type="button" data-toggle="toggle" + item) Close
+        // end .panel-item
+
+        .panel-item
+          h3 Tabs
+          p HTML:
+          pre.language-markup: code.
+            #{"<div id='example3'>"}
+              #{"<ul>"}
+                #{"<li class='is-active' data-toggle='toggle1' data-toggle-group='tab'>Tab 1</li>"}
+                #{"<li data-toggle='toggle2' data-toggle-group='tab'>Tab 2</li>"}
+                #{"<li data-toggle='toggle3' data-toggle-group='tab'>Tab 3</li>"}
+              #{"</ul>"}
+              #{"<div id='toggle1' class='tab'>"}
+                #{"<p>Content Tab 1</p>"}
+              #{"</div>"}
+              #{"<div id='toggle2' class='tab'>"}
+                #{"<p>Content Tab 2</p>"}
+              #{"</div>"}
+              #{"<div id='toggle3' class='tab'>"}
+                #{"<p>Content Tab 3</p>"}
+              #{"</div>"}
+            #{"</div>"}
+
+          p JS:
+          pre.language-javascript: code.
+            const toggler = new Unitoggle.default({
+              container: '#example3'
+            });
+
+          h4 DEMO:
+          .panel
+            #example3
+              .panel-item
+                ul.tabs
+                  each item, index in [7,8,9]
+                    li.tabs-item(data-toggle="toggle" + item data-toggle-group='tab' class= (item == 7) ? 'is-active' : '') Tab #{index + 1}
+                each item, index in [7,8,9]
+                  .tab.tab-demo(id="toggle" + item)
+                    p Tab Content #{index + 1}
+        // end .panel-item
+
+        .panel-item
+          h3 For Forms with input fields
+          p HTML:
+          pre.language-markup: code.
+            #{"<div id='example4'>"}
+              #{"<div>"}
+                #{"<div>"}
+                  #{"<label>"}
+                    #{"<input type='radio' class='is-active' data-toggle='toggle1' data-toggle-group='radio' checked/> Radio 1"}
+                  #{"</label>"}
+                #{"</div>"}
+                #{"<div>"}
+                  #{"<label>"}
+                    #{"<input type='radio' data-toggle='toggle2' data-toggle-group='radio'/> Radio 2"}
+                  #{"</label>"}
+                #{"</div>"}
+                #{"<div>"}
+                  #{"<label>"}
+                    #{"<input type='radio' data-toggle='toggle3' data-toggle-group='radio'/> Radio 3"}
+                  #{"</label>"}
+                #{"</div>"}
+              #{"</div>"}
+              #{"<div id='toggle1' class='tab'>"}
+                #{"<p>Content Radio 1</p>"}
+              #{"</div>"}
+              #{"<div id='toggle2' class='tab'>"}
+                #{"<p>Content Radio 2</p>"}
+              #{"</div>"}
+              #{"<div id='toggle3' class='tab'>"}
+                #{"<p>Content Radio 3</p>"}
+              #{"</div>"}
+            #{"</div>"}
+
+          p JS:
+          pre.language-javascript: code.
+            const toggler = new Unitoggle.default({
+              container: '#example4',
+              activateInputs: true
+            });
+
+          h4 DEMO:
+          .panel
+            #example4
+              .grid
+                .grid-item
+                  .panel-item
+                    .tabs
+                      each item, index in [10,11,12]
+                        .tabs-item
+                          label.tabs-label
+                            input(type="radio" name="radio" value= item data-toggle="toggle" + item data-toggle-group="radio" checked= (index == 0) ? true : false class= (index == 0) ? 'is-active' : '')
+                            span Radio #{index + 1}
+
+                    each item, index in [10,11,12]
+                      .tab.tab-demo(id="toggle" + item)
+                        p Content Radio #{index + 1}
+                        p
+                          label.label-group
+                            input(type="text" disabled placeholder="Input")
+                        p
+                          label.label-group
+                            input(type="checkbox" disabled)
+                            span Checkbox
+                .grid-item
+                  .panel-item
+                    label.button
+                      input(type="checkbox" data-toggle="toggle13")
+                      span Checkbox
+                    .tab.tab-demo(id="toggle13")
+                      p Content Checkbox
+                      p
+                        label.label-group
+                          input(type="text" disabled placeholder="Input")
+                      p
+                        label.label-group
+                          input(type="checkbox" disabled)
+                          span Checkbox
+        // end .panel-item
+
+        .panel-item
+          h3 DOM change
+          h4 Demo:
+          .panel
+            #example5
+              button.button#create-toggler(type="button") Create Element
+              .panel#new-togglers
+
+      // end .panel
+    // end .container
+
+    script(src="demo/prism.js")
+    script(src="dest/unitoggle.min.js")
+    script(src="demo/demo.js")

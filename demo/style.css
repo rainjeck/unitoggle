@@ -1,0 +1,219 @@
+/* --- VARS --- */
+/*
+ --- RESET --------------------------------------
+*/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+html {
+  font-size: 16px;
+}
+body {
+  padding-bottom: 2em;
+}
+/*
+ --- TAB ------------------------------
+*/
+.tab {
+  display: none;
+  opacity: 0;
+}
+.tab.is-active {
+  display: block;
+  -webkit-animation: tab-is-active 0.15s ease-in-out 0.1s 1 forwards;
+  animation: tab-is-active 0.15s ease-in-out 0.1s 1 forwards;
+}
+/*
+ --- DEMO ---------------------------------------
+*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.example {
+  padding: 2em 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-column-gap: 30px;
+}
+@media screen and (max-width: 767px) {
+  .grid {
+    grid-template-columns: repeat(1, 100%);
+    grid-row-gap: 30px;
+  }
+}
+/*
+ --- PANEL ----------------------------
+*/
+.panel .panel-item {
+  padding: 1em;
+  border: 1px solid #eee;
+}
+.panel .panel-item:not(:last-child) {
+  margin-bottom: 1em;
+}
+.header {
+  text-align: center;
+  padding: 1em 0;
+}
+h1 {
+  font-size: 2em;
+  text-align: center;
+}
+h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+h4 {
+  font-size: 1.1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+.button {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(255,255,255,0);
+  border: 1px solid rgba(0,0,0,0.05);
+  -webkit-box-shadow: 0 0 10px 0 #e9ecef;
+  box-shadow: 0 0 10px 0 #e9ecef;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-family: inherit;
+  border-radius: 5px;
+  outline: 0;
+  -webkit-transition: all 0.32s linear;
+  -o-transition: all 0.32s linear;
+  transition: all 0.32s linear;
+}
+.button:hover {
+  background-color: #d3f9d8;
+}
+.button-control.is-active {
+  background-color: #2b8a3e;
+  color: #fff;
+}
+.button input {
+  margin-right: 0.5em;
+  outline: none;
+}
+.tab-demo {
+  margin-top: 1em;
+  padding: 1em;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.tab-demo p:not(:last-child) {
+  margin-bottom: 1em;
+}
+.tabs {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  list-style: none;
+}
+.tabs-item {
+  display: block;
+  padding: 0.5em 1em;
+  font-size: 0.8em;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.tabs-item:not(:last-child) {
+  margin-right: 1em;
+}
+.tabs-item.is-active {
+  background-color: #2b8a3e;
+  color: #fff;
+}
+.tabs-label {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.tabs-label input {
+  margin-right: 0.5em;
+  outline: none;
+}
+.tabs-label input:checked ~ span {
+  font-weight: bold;
+}
+.label-group {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.label-group input[type="checkbox"] {
+  margin-right: 0.5em;
+}
+.label-group input[type="text"] {
+  height: 32px;
+  padding: 0 0.5em;
+}
+#create-toggler {
+  margin-bottom: 1em;
+}
+@-moz-keyframes tab-is-active {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes tab-is-active {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes tab-is-active {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes tab-is-active {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

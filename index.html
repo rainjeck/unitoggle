@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="https://vk.com/tishukn">
+    <link rel="stylesheet" href="demo/prism.css">
+    <link rel="stylesheet" type="text/css" href="demo/style.css">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Unitoggle Demo</title>
+  </head>
+  <body><!--[if lte IE 9]>
+    <p class="browsehappy">Вы используете <strong>устаревший</strong> браузер. Пожалуйста <a href="http://browsehappy.com/" target="_blank">обновите ваш браузер</a> чтобы воспользоваться всем функционалом сайта.</p><![endif]-->
+    <div class="container">
+      <div class="header">
+        <h1>Unitoggle Demo</h1>
+        <p>Vanilla Javascript, ES6</p>
+        <p><a href="https://rainjeck.github.io/unitoggle">Github</a></p>
+      </div>
+      <div class="panel">
+        <div class="panel-item">
+          <h3>Get Started</h3>
+          <p>Include:</p>
+          <pre class="language-markup"><code>&lt;script src=&quot;unitoggle.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+          <p>JS:</p>
+          <pre class="language-javascript"><code>const toggler = new Unitoggle.default();
+</code></pre>
+          <p>Options:</p>
+          <pre class="language-javascript"><code>container: document.body, // Container: string or object. Default: document.body
+dataAttr: 'toggle', // button and group attr. Default: [data-toggle], [data-toggle-group], [data-toggle-accordion]
+activeClass: 'is-active', // active class. Default: 'is-active'
+activateInputs: false, // Activate input fields (input, select, textarea) after open. Set attr [disabled] on input fields.
+onOpen: function(tab) {}, // After open callback
+onClose: function(tab) {} // After close callback
+</code></pre>
+          <p>CSS:</p>
+          <pre class="language-css"><code>/* DEMO CSS */
+.tab {
+  display: none;
+  opacity: 0;
+}
+
+.tab.is-active {
+  display: block;
+  animation: tab-is-active 0.15s ease-in-out 0.1s 1 forwards;
+}
+
+@keyframes tab-is-active {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}</code></pre>
+        </div>
+        <!-- end .panel-item-->
+        <div class="panel-item">
+          <h3>Basic Example</h3>
+          <p>HTML:</p>
+          <pre class="language-markup"><code>&lt;div id='example1'&gt;
+  &lt;button type='button' data-toggle='toggle1'&gt;Button Toggle 1&lt;/button&gt;
+  &lt;div id='toggle1' class='tab'&gt;
+    &lt;p&gt;Content Toggle 1&lt;/p&gt;
+    &lt;button type='button' data-toggle='toggle1'&gt;Close&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          <p>JS:</p>
+          <pre class="language-javascript"><code>const toggler = new Unitoggle.default({
+  container: '#example1'
+});
+</code></pre>
+          <h4>DEMO:</h4>
+          <div class="panel">
+            <div id="example1">
+              <div class="panel-item">
+                <button class="button button-control" type="button" data-toggle="toggle1">Button Toggle 1</button>
+                <div class="tab tab-demo" id="toggle1">
+                  <p>Content Toggle 1</p>
+                  <p>
+                    <button class="button" type="button" data-toggle="toggle1">Close</button>
+                  </p>
+                </div>
+              </div>
+              <div class="panel-item">
+                <button class="button button-control" type="button" data-toggle="toggle2">Button Toggle 2</button>
+                <div class="tab tab-demo" id="toggle2">
+                  <p>Content Toggle 2</p>
+                  <p>
+                    <button class="button" type="button" data-toggle="toggle2">Close</button>
+                  </p>
+                </div>
+              </div>
+              <div class="panel-item">
+                <button class="button button-control" type="button" data-toggle="toggle3">Button Toggle 3</button>
+                <div class="tab tab-demo" id="toggle3">
+                  <p>Content Toggle 3</p>
+                  <p>
+                    <button class="button" type="button" data-toggle="toggle3">Close</button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end .panel-item-->
+        <div class="panel-item">
+          <h3>Accordion</h3>
+          <p>HTML:</p>
+          <pre class="language-markup"><code>&lt;!-- [data-toggle-accordion] - if you want close active accordion after repeat click --&gt;
+&lt;!-- [data-toggle-group] - your group name --&gt;
+&lt;div id='example2'&gt;
+  &lt;button type='button' data-toggle='toggle1' data-toggle-accordion data-toggle-group='acc'&gt;Button Toggle&lt;/button&gt;
+  &lt;div id='toggle1' class='tab'&gt;
+    &lt;p&gt;Content Toggle&lt;/p&gt;
+    &lt;button type='button' data-toggle='toggle2'&gt;Close&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;button type='button' data-toggle='toggle2' data-toggle-accordion data-toggle-group='acc'&gt;Button Toggle&lt;/button&gt;
+  &lt;div id='toggle2' class='tab'&gt;
+    &lt;p&gt;Content Toggle&lt;/p&gt;
+    &lt;button type='button' data-toggle='toggle2'&gt;Close&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          <p>JS:</p>
+          <pre class="language-javascript"><code>const toggler = new Unitoggle.default({
+  container: '#example2'
+});
+</code></pre>
+          <h4>DEMO:</h4>
+          <div class="panel">
+            <div id="example2">
+              <div class="panel-item">
+                <button class="button button-control" type="button" data-toggle="toggle4" data-toggle-accordion data-toggle-group="acc">Button Toggle 1</button>
+                <div class="tab tab-demo" id="toggle4">
+                  <p>Content Toggle 1</p>
+                  <p>
+                    <button class="button" type="button" data-toggle="toggle4">Close</button>
+                  </p>
+                </div>
+              </div>
+              <div class="panel-item">
+                <button class="button button-control" type="button" data-toggle="toggle5" data-toggle-accordion data-toggle-group="acc">Button Toggle 2</button>
+                <div class="tab tab-demo" id="toggle5">
+                  <p>Content Toggle 2</p>
+                  <p>
+                    <button class="button" type="button" data-toggle="toggle5">Close</button>
+                  </p>
+                </div>
+              </div>
+              <div class="panel-item">
+                <button class="button button-control" type="button" data-toggle="toggle6" data-toggle-accordion data-toggle-group="acc">Button Toggle 3</button>
+                <div class="tab tab-demo" id="toggle6">
+                  <p>Content Toggle 3</p>
+                  <p>
+                    <button class="button" type="button" data-toggle="toggle6">Close</button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end .panel-item-->
+        <div class="panel-item">
+          <h3>Tabs</h3>
+          <p>HTML:</p>
+          <pre class="language-markup"><code>&lt;div id='example3'&gt;
+  &lt;ul&gt;
+    &lt;li class='is-active' data-toggle='toggle1' data-toggle-group='tab'&gt;Tab 1&lt;/li&gt;
+    &lt;li data-toggle='toggle2' data-toggle-group='tab'&gt;Tab 2&lt;/li&gt;
+    &lt;li data-toggle='toggle3' data-toggle-group='tab'&gt;Tab 3&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div id='toggle1' class='tab'&gt;
+    &lt;p&gt;Content Tab 1&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div id='toggle2' class='tab'&gt;
+    &lt;p&gt;Content Tab 2&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div id='toggle3' class='tab'&gt;
+    &lt;p&gt;Content Tab 3&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          <p>JS:</p>
+          <pre class="language-javascript"><code>const toggler = new Unitoggle.default({
+  container: '#example3'
+});
+</code></pre>
+          <h4>DEMO:</h4>
+          <div class="panel">
+            <div id="example3">
+              <div class="panel-item">
+                <ul class="tabs">
+                  <li class="tabs-item is-active" data-toggle="toggle7" data-toggle-group="tab">Tab 1</li>
+                  <li class="tabs-item" data-toggle="toggle8" data-toggle-group="tab">Tab 2</li>
+                  <li class="tabs-item" data-toggle="toggle9" data-toggle-group="tab">Tab 3</li>
+                </ul>
+                <div class="tab tab-demo" id="toggle7">
+                  <p>Tab Content 1</p>
+                </div>
+                <div class="tab tab-demo" id="toggle8">
+                  <p>Tab Content 2</p>
+                </div>
+                <div class="tab tab-demo" id="toggle9">
+                  <p>Tab Content 3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end .panel-item-->
+        <div class="panel-item">
+          <h3>For Forms with input fields</h3>
+          <p>HTML:</p>
+          <pre class="language-markup"><code>&lt;div id='example4'&gt;
+  &lt;div&gt;
+    &lt;div&gt;
+      &lt;label&gt;
+        &lt;input type='radio' class='is-active' data-toggle='toggle1' data-toggle-group='radio' checked/&gt; Radio 1
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;label&gt;
+        &lt;input type='radio' data-toggle='toggle2' data-toggle-group='radio'/&gt; Radio 2
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;label&gt;
+        &lt;input type='radio' data-toggle='toggle3' data-toggle-group='radio'/&gt; Radio 3
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id='toggle1' class='tab'&gt;
+    &lt;p&gt;Content Radio 1&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div id='toggle2' class='tab'&gt;
+    &lt;p&gt;Content Radio 2&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div id='toggle3' class='tab'&gt;
+    &lt;p&gt;Content Radio 3&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          <p>JS:</p>
+          <pre class="language-javascript"><code>const toggler = new Unitoggle.default({
+  container: '#example4',
+  activateInputs: true
+});
+</code></pre>
+          <h4>DEMO:</h4>
+          <div class="panel">
+            <div id="example4">
+              <div class="grid">
+                <div class="grid-item">
+                  <div class="panel-item">
+                    <div class="tabs">
+                      <div class="tabs-item">
+                        <label class="tabs-label">
+                          <input class="is-active" type="radio" name="radio" value="10" data-toggle="toggle10" data-toggle-group="radio" checked><span>Radio 1</span>
+                        </label>
+                      </div>
+                      <div class="tabs-item">
+                        <label class="tabs-label">
+                          <input type="radio" name="radio" value="11" data-toggle="toggle11" data-toggle-group="radio"><span>Radio 2</span>
+                        </label>
+                      </div>
+                      <div class="tabs-item">
+                        <label class="tabs-label">
+                          <input type="radio" name="radio" value="12" data-toggle="toggle12" data-toggle-group="radio"><span>Radio 3</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="tab tab-demo" id="toggle10">
+                      <p>Content Radio 1</p>
+                      <p>
+                        <label class="label-group">
+                          <input type="text" disabled placeholder="Input">
+                        </label>
+                      </p>
+                      <p>
+                        <label class="label-group">
+                          <input type="checkbox" disabled><span>Checkbox</span>
+                        </label>
+                      </p>
+                    </div>
+                    <div class="tab tab-demo" id="toggle11">
+                      <p>Content Radio 2</p>
+                      <p>
+                        <label class="label-group">
+                          <input type="text" disabled placeholder="Input">
+                        </label>
+                      </p>
+                      <p>
+                        <label class="label-group">
+                          <input type="checkbox" disabled><span>Checkbox</span>
+                        </label>
+                      </p>
+                    </div>
+                    <div class="tab tab-demo" id="toggle12">
+                      <p>Content Radio 3</p>
+                      <p>
+                        <label class="label-group">
+                          <input type="text" disabled placeholder="Input">
+                        </label>
+                      </p>
+                      <p>
+                        <label class="label-group">
+                          <input type="checkbox" disabled><span>Checkbox</span>
+                        </label>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid-item">
+                  <div class="panel-item">
+                    <label class="button">
+                      <input type="checkbox" data-toggle="toggle13"><span>Checkbox</span>
+                    </label>
+                    <div class="tab tab-demo" id="toggle13">
+                      <p>Content Checkbox</p>
+                      <p>
+                        <label class="label-group">
+                          <input type="text" disabled placeholder="Input">
+                        </label>
+                      </p>
+                      <p>
+                        <label class="label-group">
+                          <input type="checkbox" disabled><span>Checkbox</span>
+                        </label>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end .panel-item-->
+        <div class="panel-item">
+          <h3>DOM change</h3>
+          <h4>Demo:</h4>
+          <div class="panel">
+            <div id="example5">
+              <button class="button" id="create-toggler" type="button">Create Element</button>
+              <div class="panel" id="new-togglers"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end .panel-->
+    </div>
+    <!-- end .container-->
+    <script src="demo/prism.js"></script>
+    <script src="dest/unitoggle.min.js"></script>
+    <script src="demo/demo.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "name": "jstabs",
+  "version": "1.0.0",
+  "description": "Vanilla Javascript Tabs",
+  "author": "Tishuk Nadezda",
+  "homepage": "https://rainjeck.github.io/jstabs/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rainjeck/jstabs"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "browserslist": "last 10 versions",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-modules-umd": "^7.2.0",
+    "@babel/preset-env": "^7.4.5",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-load-plugins": "^1.6.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-stylus": "^2.7.0"
+  }
+}
