@@ -19,6 +19,10 @@ const toggler4 = new Unitoggle.default({
   activateInputs: true
 });
 
+// EXAMPLE 6
+const toggler6 = new Unitoggle.default({
+  container: '#example6'
+});
 
 // EXAMPLE 5
 const toggler5 = new Unitoggle.default({

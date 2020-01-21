@@ -27,6 +27,7 @@ html(lang="ru-RU")
         h1 Unitoggle Demo
         p Vanilla Javascript, ES6
         p #[a(href="https://github.com/rainjeck/unitoggle") Github]
+
       .panel
         .panel-item
           h3 Get Started
@@ -251,6 +252,31 @@ html(lang="ru-RU")
                         label.label-group
                           input(type="checkbox" disabled)
                           span Checkbox
+        // end .panel-item
+
+        .panel-item
+          h3 Nesting
+          h4 DEMO:
+          .panel
+            #example6
+              .panel-item
+                button.button.button-control(type="button" data-toggle="nesting1") Button Toggle
+                .tab.tab-demo(id="nesting1")
+                  .grid
+                    .grid-item
+                      ul.tabs
+                        each item, index in ['nesting11','nesting12','nesting13']
+                          li.tabs-item(data-toggle= item data-toggle-group='nesting-tab-1' class= (index == 0) ? 'is-active' : '') Tab #{index + 1}
+                      each item, index in ['nesting11','nesting12','nesting13']
+                        .tab.tab-demo(id= item)
+                          p Tab Content #{index + 1}
+                    .grid-item
+                      .panel
+                        each item, index in [1,2,3]
+                          .panel-item
+                            button.button.button-control(type="button" data-toggle="nesting-acc-" + item data-toggle-accordion data-toggle-group="nesting-acc") Button Toggle #{index + 1}
+                            .tab.tab-demo(id="nesting-acc-" + item)
+                              p Content Toggle #{index + 1}
         // end .panel-item
 
         .panel-item

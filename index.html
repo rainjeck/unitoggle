@@ -342,6 +342,60 @@ onClose: function(tab) {} // After close callback
         </div>
         <!-- end .panel-item-->
         <div class="panel-item">
+          <h3>Nesting</h3>
+          <h4>DEMO:</h4>
+          <div class="panel">
+            <div id="example6">
+              <div class="panel-item">
+                <button class="button button-control" type="button" data-toggle="nesting1">Button Toggle</button>
+                <div class="tab tab-demo" id="nesting1">
+                  <div class="grid">
+                    <div class="grid-item">
+                      <ul class="tabs">
+                        <li class="tabs-item is-active" data-toggle="nesting11" data-toggle-group="nesting-tab-1">Tab 1</li>
+                        <li class="tabs-item" data-toggle="nesting12" data-toggle-group="nesting-tab-1">Tab 2</li>
+                        <li class="tabs-item" data-toggle="nesting13" data-toggle-group="nesting-tab-1">Tab 3</li>
+                      </ul>
+                      <div class="tab tab-demo" id="nesting11">
+                        <p>Tab Content 1</p>
+                      </div>
+                      <div class="tab tab-demo" id="nesting12">
+                        <p>Tab Content 2</p>
+                      </div>
+                      <div class="tab tab-demo" id="nesting13">
+                        <p>Tab Content 3</p>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <div class="panel">
+                        <div class="panel-item">
+                          <button class="button button-control" type="button" data-toggle="nesting-acc-1" data-toggle-accordion data-toggle-group="nesting-acc">Button Toggle 1</button>
+                          <div class="tab tab-demo" id="nesting-acc-1">
+                            <p>Content Toggle 1</p>
+                          </div>
+                        </div>
+                        <div class="panel-item">
+                          <button class="button button-control" type="button" data-toggle="nesting-acc-2" data-toggle-accordion data-toggle-group="nesting-acc">Button Toggle 2</button>
+                          <div class="tab tab-demo" id="nesting-acc-2">
+                            <p>Content Toggle 2</p>
+                          </div>
+                        </div>
+                        <div class="panel-item">
+                          <button class="button button-control" type="button" data-toggle="nesting-acc-3" data-toggle-accordion data-toggle-group="nesting-acc">Button Toggle 3</button>
+                          <div class="tab tab-demo" id="nesting-acc-3">
+                            <p>Content Toggle 3</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end .panel-item-->
+        <div class="panel-item">
           <h3>DOM change</h3>
           <h4>Demo:</h4>
           <div class="panel">
