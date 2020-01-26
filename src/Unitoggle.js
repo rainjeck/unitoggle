@@ -59,7 +59,8 @@ export default class Unitoggle {
 
   activate(tab) {
     const searchString = `[data-${this.dataAttr}="${tab.id}"]`;
-    const buttons = Array.from(document.querySelectorAll(searchString));
+    const buttons = Array.prototype.slice.call(document.querySelectorAll(searchString));
+    // const buttons = Array.from(document.querySelectorAll(searchString));
 
     if (tab.classList.contains(this.activeClass)) {
 
@@ -84,7 +85,8 @@ export default class Unitoggle {
 
   inactivate(tab) {
     const searchString = `[data-${this.dataAttr}="${tab.id}"]`;
-    const buttons = Array.from(document.querySelectorAll(searchString));
+    const buttons = Array.prototype.slice.call(document.querySelectorAll(searchString));
+    // const buttons = Array.from(document.querySelectorAll(searchString));
 
     buttons.forEach(button => {
       button.classList.remove(this.activeClass);
@@ -102,7 +104,9 @@ export default class Unitoggle {
   }
 
   activateTabs() {
-    const buttons = Array.from(this.container.querySelectorAll(`[data-${this.dataAttr}-group].${this.activeClass}`));
+    const searchString = `[data-${this.dataAttr}-group].${this.activeClass}`;
+    const buttons = Array.prototype.slice.call(this.container.querySelectorAll(searchString));
+    // const buttons = Array.from(this.container.querySelectorAll(`[data-${this.dataAttr}-group].${this.activeClass}`));
 
     if (buttons) {
       buttons.forEach(button => {
@@ -115,7 +119,9 @@ export default class Unitoggle {
   }
 
   closeGroup(groupID) {
-    const groupButtons = Array.from(document.querySelectorAll(`[data-${this.dataAttr}-group="${groupID}"]`));
+    const searchString = `[data-${this.dataAttr}-group="${groupID}"]`;
+    const groupButtons = Array.prototype.slice.call(document.querySelectorAll(searchString));
+    // const groupButtons = Array.from(document.querySelectorAll(`[data-${this.dataAttr}-group="${groupID}"]`));
 
     groupButtons.forEach(button => {
       button.classList.remove(this.activeClass);
@@ -132,7 +138,8 @@ export default class Unitoggle {
   }
 
   enableInputs(tab) {
-    const inputs = Array.from(tab.querySelectorAll('input, select, textarea'));
+    const inputs = Array.prototype.slice.call(tab.querySelectorAll('input, select, textarea'));
+    // const inputs = Array.from(tab.querySelectorAll('input, select, textarea'));
 
     inputs.forEach(input => {
       input.removeAttribute('disabled');
@@ -140,7 +147,8 @@ export default class Unitoggle {
   }
 
   disableInputs(tab) {
-    const inputs = Array.from(tab.querySelectorAll('input, select, textarea'));
+    const inputs = Array.prototype.slice.call(tab.querySelectorAll('input, select, textarea'));
+    // const inputs = Array.from(tab.querySelectorAll('input, select, textarea'));
 
     inputs.forEach(input => {
       input.setAttribute('disabled', true);

@@ -101,7 +101,7 @@
         var _this = this;
 
         var searchString = "[data-".concat(this.dataAttr, "=\"").concat(tab.id, "\"]");
-        var buttons = Array.from(document.querySelectorAll(searchString));
+        var buttons = Array.prototype.slice.call(document.querySelectorAll(searchString)); // const buttons = Array.from(document.querySelectorAll(searchString));
 
         if (tab.classList.contains(this.activeClass)) {
           this.inactivate(tab);
@@ -127,7 +127,8 @@
         var _this2 = this;
 
         var searchString = "[data-".concat(this.dataAttr, "=\"").concat(tab.id, "\"]");
-        var buttons = Array.from(document.querySelectorAll(searchString));
+        var buttons = Array.prototype.slice.call(document.querySelectorAll(searchString)); // const buttons = Array.from(document.querySelectorAll(searchString));
+
         buttons.forEach(function (button) {
           button.classList.remove(_this2.activeClass);
         });
@@ -146,7 +147,8 @@
       value: function activateTabs() {
         var _this3 = this;
 
-        var buttons = Array.from(this.container.querySelectorAll("[data-".concat(this.dataAttr, "-group].").concat(this.activeClass)));
+        var searchString = "[data-".concat(this.dataAttr, "-group].").concat(this.activeClass);
+        var buttons = Array.prototype.slice.call(this.container.querySelectorAll(searchString)); // const buttons = Array.from(this.container.querySelectorAll(`[data-${this.dataAttr}-group].${this.activeClass}`));
 
         if (buttons) {
           buttons.forEach(function (button) {
@@ -162,7 +164,9 @@
       value: function closeGroup(groupID) {
         var _this4 = this;
 
-        var groupButtons = Array.from(document.querySelectorAll("[data-".concat(this.dataAttr, "-group=\"").concat(groupID, "\"]")));
+        var searchString = "[data-".concat(this.dataAttr, "-group=\"").concat(groupID, "\"]");
+        var groupButtons = Array.prototype.slice.call(document.querySelectorAll(searchString)); // const groupButtons = Array.from(document.querySelectorAll(`[data-${this.dataAttr}-group="${groupID}"]`));
+
         groupButtons.forEach(function (button) {
           button.classList.remove(_this4.activeClass);
           var tabID = button.dataset[_this4.dataAttr];
@@ -177,7 +181,8 @@
     }, {
       key: "enableInputs",
       value: function enableInputs(tab) {
-        var inputs = Array.from(tab.querySelectorAll('input, select, textarea'));
+        var inputs = Array.prototype.slice.call(tab.querySelectorAll('input, select, textarea')); // const inputs = Array.from(tab.querySelectorAll('input, select, textarea'));
+
         inputs.forEach(function (input) {
           input.removeAttribute('disabled');
         });
@@ -185,7 +190,8 @@
     }, {
       key: "disableInputs",
       value: function disableInputs(tab) {
-        var inputs = Array.from(tab.querySelectorAll('input, select, textarea'));
+        var inputs = Array.prototype.slice.call(tab.querySelectorAll('input, select, textarea')); // const inputs = Array.from(tab.querySelectorAll('input, select, textarea'));
+
         inputs.forEach(function (input) {
           input.setAttribute('disabled', true);
         });
