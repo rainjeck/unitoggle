@@ -49,4 +49,12 @@ function createToggler() {
   countButtons++;
 }
 
-document.querySelector('#create-toggler').addEventListener('click', createToggler);
+// EXAMPLE HASH
+const togglerHash = new Unitoggle.default({
+  container: '#example-hash',
+  hash: true
+});
+
+if ( document.querySelector('#create-toggler') ) {
+  document.querySelector('#create-toggler').addEventListener('click', createToggler);
+}

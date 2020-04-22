@@ -8,7 +8,8 @@ export default class Unitoggle {
     this.container = document.body;
 
     if (typeof options.container === 'string') {
-      this.container = document.querySelector(options.container) || document.body;
+      if (!document.querySelector(options.container)) return;
+      this.container = document.querySelector(options.container);
     }
 
     if (typeof options.container === 'object') {
@@ -17,6 +18,7 @@ export default class Unitoggle {
     this.dataAttr = options.dataAttr || 'toggle'; // [data-{dataAttr}]
     this.activeClass = options.activeClass || 'is-active'; // class name for add
     this.activateInputs = options.activateInputs || false; // activate inputs when open/on
+    this.hash = options.hash || false; // hash
     this.onOpen = options.onOpen || ''; // after Open
     this.onClose = options.onClose || ''; // after Close
 
@@ -28,7 +30,14 @@ export default class Unitoggle {
 
   init() {
     this.container.addEventListener('click', this.clickButton.bind(this));
-    this.activateTabs();
+
+    if ( !this.hash ) {
+      this.activateTabs();
+    }
+
+    if ( this.hash ) {
+      this.activateHash();
+    }
   }
 
   clickButton(e) {
@@ -55,12 +64,15 @@ export default class Unitoggle {
     }
 
     this.activate(tab);
+
+    if ( this.hash ) {
+      this.setHash();
+    }
   }
 
   activate(tab) {
-    const searchString = `[data-${this.dataAttr}="${tab.id}"]`;
-    const buttons = Array.prototype.slice.call(document.querySelectorAll(searchString));
-    // const buttons = Array.from(document.querySelectorAll(searchString));
+    const selector = `[data-${this.dataAttr}="${tab.id}"]`;
+    const buttons = Array.prototype.slice.call(document.querySelectorAll(selector));
 
     if (tab.classList.contains(this.activeClass)) {
 
@@ -84,9 +96,8 @@ export default class Unitoggle {
   }
 
   inactivate(tab) {
-    const searchString = `[data-${this.dataAttr}="${tab.id}"]`;
-    const buttons = Array.prototype.slice.call(document.querySelectorAll(searchString));
-    // const buttons = Array.from(document.querySelectorAll(searchString));
+    const selector = `[data-${this.dataAttr}="${tab.id}"]`;
+    const buttons = Array.prototype.slice.call(this.container.querySelectorAll(selector));
 
     buttons.forEach(button => {
       button.classList.remove(this.activeClass);
@@ -104,11 +115,10 @@ export default class Unitoggle {
   }
 
   activateTabs() {
-    const searchString = `[data-${this.dataAttr}-group].${this.activeClass}`;
-    const buttons = Array.prototype.slice.call(this.container.querySelectorAll(searchString));
-    // const buttons = Array.from(this.container.querySelectorAll(`[data-${this.dataAttr}-group].${this.activeClass}`));
+    const selector = `[data-${this.dataAttr}-group].${this.activeClass}`;
+    const buttons = Array.prototype.slice.call(this.container.querySelectorAll(selector));
 
-    if (buttons) {
+    if ( buttons ) {
       buttons.forEach(button => {
         const tabID = button.dataset[this.dataAttr];
         const tab = document.getElementById(tabID);
@@ -119,9 +129,8 @@ export default class Unitoggle {
   }
 
   closeGroup(groupID) {
-    const searchString = `[data-${this.dataAttr}-group="${groupID}"]`;
-    const groupButtons = Array.prototype.slice.call(document.querySelectorAll(searchString));
-    // const groupButtons = Array.from(document.querySelectorAll(`[data-${this.dataAttr}-group="${groupID}"]`));
+    const selector = `[data-${this.dataAttr}-group="${groupID}"]`;
+    const groupButtons = Array.prototype.slice.call(this.container.querySelectorAll(selector));
 
     groupButtons.forEach(button => {
       button.classList.remove(this.activeClass);
@@ -139,7 +148,6 @@ export default class Unitoggle {
 
   enableInputs(tab) {
     const inputs = Array.prototype.slice.call(tab.querySelectorAll('input, select, textarea'));
-    // const inputs = Array.from(tab.querySelectorAll('input, select, textarea'));
 
     inputs.forEach(input => {
       input.removeAttribute('disabled');
@@ -148,10 +156,112 @@ export default class Unitoggle {
 
   disableInputs(tab) {
     const inputs = Array.prototype.slice.call(tab.querySelectorAll('input, select, textarea'));
-    // const inputs = Array.from(tab.querySelectorAll('input, select, textarea'));
 
     inputs.forEach(input => {
       input.setAttribute('disabled', true);
     });
+  }
+
+  activateHash() {
+
+    const hash = window.location.hash;
+
+    if ( !hash ) {
+      this.activateTabs();
+      this.setHash();
+      return;
+    };
+
+    const hashItems = this.checkHash( hash.replace('#', '').split('_') );
+
+    if ( !hashItems ) {
+      this.activateTabs();
+      this.setHash();
+      return;
+    }
+
+    hashItems.forEach( item => {
+      const selector = `[data-${this.dataAttr}="${item}"]`;
+      const button = this.container.querySelector(selector);
+
+      const attr = `data-${this.dataAttr}-group`;
+      const groupID = button.getAttribute(attr);
+      const tab = document.getElementById(item);
+
+      this.closeGroup(groupID);
+      this.activate(tab);
+    });
+
+    this.setHash();
+  }
+
+  checkHash( hashItems ) {
+    const selector = `[data-${this.dataAttr}-group]`;
+    const tabsGroup = this.container.querySelectorAll(selector);
+
+    let groups = [];
+
+    [].forEach.call(tabsGroup, elem => {
+      const attr = `data-${this.dataAttr}-group`;
+      const group = elem.getAttribute(attr);
+
+      if ( groups.indexOf(group) < 0 ) {
+        groups.push(group);
+      }
+    });
+
+    if ( hashItems.length !== groups.length ) {
+      return 0;
+    }
+
+    let offIndex;
+
+    hashItems.forEach( item => {
+      const selector = `[data-${this.dataAttr}="${item}"]`;
+      const button = this.container.querySelector(selector);
+
+      if ( button !== null ) {
+        const attr = `data-${this.dataAttr}-group`;
+        const group = button.getAttribute(attr);
+
+        groups.splice(groups.indexOf(group), 1);
+      }
+
+      if ( button === null ) {
+        offIndex = hashItems.indexOf(item);
+        hashItems.splice(offIndex, 1);
+      }
+    });
+
+    groups.forEach( item => {
+      const selector = `[data-${this.dataAttr}-group="${item}"].${this.activeClass}`;
+      const button = this.container.querySelector(selector);
+
+      const attr = `data-${this.dataAttr}`;
+      const tabID = button.getAttribute(attr);
+
+      if ( hashItems.indexOf(tabID) < 0 ) {
+        hashItems.splice(offIndex, 0, tabID);
+      }
+    });
+
+    return hashItems;
+  }
+
+  setHash() {
+    const selector = `[data-${this.dataAttr}-group].${this.activeClass}`;
+    const items = Array.prototype.slice.call( this.container.querySelectorAll(selector) );
+
+    let ids = [];
+
+    items.forEach(item => {
+      const attrName = `data-${this.dataAttr}`;
+      const id = item.getAttribute(attrName);
+      ids.push(id);
+    });
+
+    const hash = ids.join('_');
+
+    window.location.hash = '#' + hash;
   }
 }

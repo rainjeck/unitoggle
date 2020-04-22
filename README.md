@@ -6,7 +6,7 @@ Universal toggle. Use it for tabs, accordions and other switchers.
 - Support nesting
 - Disable/enable input fields
 
-[Demo & Documentation](https://rainjeck.github.io/unitoggle)
+[Demo & Documentation](//rainjeck.github.io/unitoggle)
 
 Include ```unitoggle.min.js```.
 
@@ -23,7 +23,7 @@ Include ```unitoggle.min.js```.
 
 ```
 [data-toggle-accordion] - if you want close active accordion after repeat click
-[data-toggle-group] - your group name
+[data-toggle-group] - your group name (for tabs)
 
 <div data-toggle="toggle-id1" data-toggle-accordion data-toggle-group="group-name">Button</div>
 <div id="toggle-id1">
@@ -42,6 +42,7 @@ const toggler = new Unitoggle.default({
     container: docucument.body, // Container: string or object. Default: document.body
     dataAttr: 'toggle', // button and group attr. Default: [data-toggle], [data-toggle-group], [data-toggle-accordion]
     activeClass: 'is-active', // active class. Default: 'is-active'
+    hash: false, // hash support
     activateInputs: false, // Activate input fields (input, select, textarea) after open. Set attr [disabled] on input fields.
     onOpen: function(tab) {}, // After open callback
     onClose: function(tab) {} // After close callback
@@ -70,6 +71,3 @@ const toggler = new Unitoggle.default({
   }
 }
 ```
-
-To do:
-- Hash support

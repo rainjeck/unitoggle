@@ -1,0 +1,115 @@
+doctype html
+html(lang="ru-RU")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv='X-UA-Compatible', content="IE=edge")
+    meta(name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
+    meta(name="format-detection" content="telephone=no")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    meta(name="author" content="//vk.com/tishukn")
+
+    link(rel="stylesheet", href="demo/prism.css")
+
+    link(rel="stylesheet" type='text/css' href="demo/style.css")
+
+    meta(name="keywords" content="")
+    meta(name="description" content="")
+
+    title Unitoggle Demo
+
+  body
+    <!--[if lte IE 9]>
+    p.browsehappy Вы используете #[strong устаревший] браузер. Пожалуйста #[a(href="//browsehappy.com/", target="_blank") обновите ваш браузер] чтобы воспользоваться всем функционалом сайта.
+    <![endif]-->
+
+    .container
+      .header
+        h1 Unitoggle - Hash Demo
+        p &#8592; #[a(href="index.html") Back] | #[a(href="//github.com/rainjeck/unitoggle") Github]
+
+      .panel
+        .panel-item
+          h3 Tabs
+          p HTML:
+          pre.language-markup: code.
+            #{"<ul>"}
+              #{"<li class='is-active' data-toggle='toggle1' data-toggle-group='tab'>Tab 1</li>"}
+              #{"<li data-toggle='toggle2' data-toggle-group='tab'>Tab 2</li>"}
+              #{"<li data-toggle='toggle3' data-toggle-group='tab'>Tab 3</li>"}
+            #{"</ul>"}
+            #{"<div id='toggle1' class='tab'>"}
+              #{"<p>Content Tab 1</p>"}
+            #{"</div>"}
+            #{"<div id='toggle2' class='tab'>"}
+              #{"<p>Content Tab 2</p>"}
+            #{"</div>"}
+            #{"<div id='toggle3' class='tab'>"}
+              #{"<p>Content Tab 3</p>"}
+            #{"</div>"}
+            ...
+            #{"<ul>"}
+              #{"<li class='is-active' data-toggle='toggle4' data-toggle-group='tab2'>Tab 4</li>"}
+              #{"<li data-toggle='toggle5' data-toggle-group='tab2'>Tab 5</li>"}
+              #{"<li data-toggle='toggle6' data-toggle-group='tab2'>Tab 6</li>"}
+            #{"</ul>"}
+            #{"<div id='toggle4' class='tab'>"}
+              #{"<p>Content Tab 4</p>"}
+            #{"</div>"}
+            #{"<div id='toggle5' class='tab'>"}
+              #{"<p>Content Tab 5</p>"}
+            #{"</div>"}
+            #{"<div id='toggle6' class='tab'>"}
+              #{"<p>Content Tab 6</p>"}
+            #{"</div>"}
+
+          p JS:
+          pre.language-javascript: code.
+            const toggler = new Unitoggle.default({
+              hash: true
+            });
+
+          h4 DEMO:
+          #example-hash
+            .panel
+              .panel-item
+                ul.tabs
+                  each item, index in [1,2,3]
+                    li.tabs-item(
+                      data-toggle="toggle" + item
+                      data-toggle-group='tab1'
+                      class= ( item == 3 ) ? 'is-active' : ''
+                      ) Tab #{item}
+                each item, index in [1,2,3]
+                  .tab.tab-demo(id="toggle" + item)
+                    p Tab Content #{item}
+              // end .panel-item
+
+              .panel-item
+                ul.tabs
+                  each item, index in [4,5,6]
+                    li.tabs-item(
+                      data-toggle="toggle" + item
+                      data-toggle-group='tab2'
+                      class= ( item == 5 ) ? 'is-active' : ''
+                      ) Tab #{item}
+                each item, index in [4,5,6]
+                  .tab.tab-demo(id="toggle" + item)
+                    p Tab Content #{item}
+              // end .panel-item
+
+              .panel-item
+                ul.tabs
+                  each item, index in [7,8,9]
+                    li.tabs-item(
+                      data-toggle="toggle" + item
+                      data-toggle-group='tab3'
+                      class= ( item == 7 ) ? 'is-active' : ''
+                      ) Tab #{item}
+                each item, index in [7,8,9]
+                  .tab.tab-demo(id="toggle" + item)
+                    p Tab Content #{item}
+              // end .panel-item
+
+    script(src="demo/prism.js")
+    script(src="dest/unitoggle.js")
+    script(src="demo/demo.js")
