@@ -3,7 +3,7 @@
  * Repository: https://github.com/rainjeck/unitoggle
  */
 
-export default class Unitoggle {
+class Unitoggle {
   constructor(options = {}) {
     this.container = document.body;
 

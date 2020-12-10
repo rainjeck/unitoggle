@@ -15,7 +15,8 @@ gulp.task("js", function() {
           ['@babel/env']
         ],
         plugins: [
-          "@babel/plugin-transform-modules-umd"
+          // "@babel/plugin-transform-modules-umd"
+          "@babel/plugin-proposal-class-properties"
         ],
       }, )
     )

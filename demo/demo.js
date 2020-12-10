@@ -1,31 +1,31 @@
 // EXAMPLE 1
-const toggler1 = new Unitoggle.default({
+const toggler1 = new Unitoggle({
   container: '#example1'
 });
 
 // EXAMPLE 2
-const toggler2 = new Unitoggle.default({
+const toggler2 = new Unitoggle({
   container: '#example2'
 });
 
 // EXAMPLE 3
-const toggler3 = new Unitoggle.default({
+const toggler3 = new Unitoggle({
   container: '#example3'
 });
 
 // EXAMPLE 4
-const toggler4 = new Unitoggle.default({
+const toggler4 = new Unitoggle({
   container: '#example4',
   activateInputs: true
 });
 
 // EXAMPLE 6
-const toggler6 = new Unitoggle.default({
+const toggler6 = new Unitoggle({
   container: '#example6'
 });
 
 // EXAMPLE 5
-const toggler5 = new Unitoggle.default({
+const toggler5 = new Unitoggle({
   container: '#example5'
 });
 
@@ -50,7 +50,7 @@ function createToggler() {
 }
 
 // EXAMPLE HASH
-const togglerHash = new Unitoggle.default({
+const togglerHash = new Unitoggle({
   container: '#example-hash',
   hash: true
 });
