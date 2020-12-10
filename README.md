@@ -39,7 +39,7 @@ Include ```unitoggle.min.js```.
 **JS**
 
 ```
-const toggler = new Unitoggle.default({
+const toggler = new Unitoggle({
     container: docucument.body, // Container: string or object. Default: document.body
     dataAttr: 'toggle', // button and group attr. Default: [data-toggle], [data-toggle-group], [data-toggle-accordion]
     activeClass: 'is-active', // active class. Default: 'is-active'
