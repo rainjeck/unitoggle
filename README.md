@@ -5,6 +5,7 @@ Universal toggle. Use it for tabs, accordions and other switchers.
 - Any style
 - Support nesting
 - Disable/enable input fields
+- Hash support
 
 [Demo & Documentation](//rainjeck.github.io/unitoggle)
 
