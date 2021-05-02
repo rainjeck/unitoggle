@@ -29,15 +29,14 @@
           <p>Include:</p>
           <pre class="language-markup"><code>&lt;script src=&quot;unitoggle.min.js&quot;&gt;&lt;/script&gt;</code></pre>
           <p>JS:</p>
-          <pre class="language-javascript"><code>const toggler = new Unitoggle();
-</code></pre>
-          <p>Options:</p>
-          <pre class="language-javascript"><code>container: document.body, // Container: string or object. Default: document.body
-dataAttr: 'toggle', // button and group attr. Default: [data-toggle], [data-toggle-group], [data-toggle-accordion]
-activeClass: 'is-active', // active class. Default: 'is-active'
-activateInputs: false, // Activate input fields (input, select, textarea) after open. Set attr [disabled] on input fields.
-onOpen: function(tab) {}, // After open callback
-onClose: function(tab) {} // After close callback
+          <pre class="language-javascript"><code>const toggler = new Unitoggle({
+  container: document.body, // Container: string or object. Default: document.body
+  dataAttr: 'toggle', // button and group attr. Default: [data-toggle], [data-toggle-group], [data-toggle-accordion]
+  activeClass: 'is-active', // active class. Default: 'is-active'
+  activateInputs: false, // Activate input fields (input, select, textarea) after open. Set attr [disabled] on input fields.
+  onOpen: function(tab) {}, // After open callback
+  onClose: function(tab) {} // After close callback
+});
 </code></pre>
           <p>CSS:</p>
           <pre class="language-css"><code>/* DEMO CSS */
