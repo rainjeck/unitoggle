@@ -12,18 +12,26 @@ gulp.task("js", function() {
     .pipe(
       plugin.babel({
         presets: [
-          ['@babel/env']
+          ['@babel/preset-env']
         ],
         plugins: [
-          // "@babel/plugin-transform-modules-umd"
           "@babel/plugin-proposal-class-properties"
         ],
-      }, )
+      }, ).on("error",
+        plugin.notify.onError("*** JS ***: <%= error.message %>")
+      )
     )
+    .pipe( plugin.umd() )
     .pipe(plugin.rename({
       basename: pluginName
     }))
     .pipe(plugin.sourcemaps.write("../dest"))
+    .pipe(plugin.headerComment(`
+      License: <%= pkg.license %>
+      Description: <%= pkg.description %>
+      Author: <%= (pkg.author) %>
+      Homepage: <%= pkg.homepage %>
+    `))
     .pipe(gulp.dest("./dest"))
   );
 });
@@ -36,6 +44,12 @@ gulp.task("js-minify", function() {
     .pipe(plugin.rename({
       suffix: '.min'
     }))
+    .pipe(plugin.headerComment(`
+      License: <%= pkg.license %>
+      Description: <%= pkg.description %>
+      Author: <%= (pkg.author) %>
+      Homepage: <%= pkg.homepage %>
+    `))
     .pipe(gulp.dest("./dest"))
   );
 });

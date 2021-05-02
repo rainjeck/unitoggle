@@ -1,8 +1,3 @@
-/**
- * Author and copyright: Tishuk Nadezda (https://github.com/rainjeck)
- * Repository: https://github.com/rainjeck/unitoggle
- */
-
 class Unitoggle {
   constructor(options = {}) {
     this.container = document.body;

@@ -1,3 +1,19 @@
+/**
+ * License: MIT
+ * Description: Universal toggle. Use it for tabs, accordions and other switchers
+ * Author: Tishuk Nadezda
+ * Homepage: https://rainjeck.github.io/unitoggle/
+ */
+
+;(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define([], factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
+  } else {
+    root.Unitoggle = factory();
+  }
+}(this, function() {
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -8,10 +24,6 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-/**
- * Author and copyright: Tishuk Nadezda (https://github.com/rainjeck)
- * Repository: https://github.com/rainjeck/unitoggle
- */
 var Unitoggle = /*#__PURE__*/function () {
   function Unitoggle() {
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -295,4 +307,7 @@ var Unitoggle = /*#__PURE__*/function () {
 
   return Unitoggle;
 }();
+return Unitoggle;
+}));
+
 //# sourceMappingURL=../dest/unitoggle.js.map

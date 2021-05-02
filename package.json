@@ -1,34 +1,34 @@
 {
-  "name": "jstabs",
+  "name": "unitoggle",
   "version": "1.0.0",
-  "description": "Vanilla Javascript Tabs",
+  "description": "Universal toggle. Use it for tabs, accordions and other switchers",
   "author": "Tishuk Nadezda",
-  "homepage": "https://rainjeck.github.io/jstabs/",
+  "homepage": "https://rainjeck.github.io/unitoggle/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rainjeck/jstabs"
+    "url": "https://github.com/rainjeck/unitoggle"
   },
   "main": "index.js",
   "license": "MIT",
   "browserslist": "last 10 versions",
-  "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.12.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.4.5",
-    "@babel/plugin-transform-modules-umd": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-modules-umd": "^7.14.0",
     "@babel/preset-env": "^7.4.5",
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-babel": "^8.0.0",
-    "gulp-concat": "^2.6.1",
+    "gulp-header-comment": "^0.9.0",
     "gulp-jsmin": "^0.1.5",
     "gulp-load-plugins": "^1.6.0",
     "gulp-notify": "^3.2.0",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-stylus": "^2.7.0"
+    "gulp-stylus": "^2.7.0",
+    "gulp-umd": "^2.0.0"
   }
 }
